@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CovidReponse", "CovidReponse\CovidReponse.csproj", "{95EED449-4B53-4A96-926A-DA0C4B68892D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{95EED449-4B53-4A96-926A-DA0C4B68892D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95EED449-4B53-4A96-926A-DA0C4B68892D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95EED449-4B53-4A96-926A-DA0C4B68892D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95EED449-4B53-4A96-926A-DA0C4B68892D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
