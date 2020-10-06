@@ -1,13 +1,13 @@
 using System;
-using System.Collections.Generic;
+using System.Data;
 using System.Linq;
-using System.Threading.Tasks;
+using CovidReponse.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MySql.Data.MySqlClient;
 
 namespace CovidReponse
 {
@@ -23,6 +23,16 @@ namespace CovidReponse
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+             services.AddScoped<IDbConnection>((s) =>
+            {
+                IDbConnection conn = new MySqlConnection(Configuration.GetConnectionString("CovidResponse"));
+                conn.Open();
+                return conn;
+            });
+
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IPlaceRepository, PlaceRespository>();
+
             services.AddControllersWithViews();
         }
 
@@ -51,6 +61,10 @@ namespace CovidReponse
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Home}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "place",
+                    pattern: "{controller=Place}/{action=PickAPlace}");
             });
         }
     }

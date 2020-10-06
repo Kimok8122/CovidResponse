@@ -1,9 +1,9 @@
 ﻿using System;
 namespace CovidReponse.Models
 {
-    public class place
+    public class Place
     {
-        public place()
+        public Place()
         {
         }
 

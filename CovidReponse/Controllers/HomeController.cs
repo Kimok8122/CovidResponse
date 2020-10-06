@@ -20,11 +20,14 @@ namespace CovidReponse.Controllers
 
         public IActionResult Home()
         {
+            _logger.LogError("HELLO KIMO");
+
             return View();
         }
 
         public IActionResult Login()
         {
+            _logger.LogError("HELLO MIKE");
             return View();
         }
 

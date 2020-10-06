@@ -1,0 +1,22 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<Place>
+
+
+
+<h2> Hello "XXXX"</h2>
+<p>"What establishment would you like to review'?</p>
+
+
+<select>
+
+    @foreach (var place in Model)
+    {
+
+        <option value="@place.place_ID">@place.company</option>
+
+    }
+
+
+</select>

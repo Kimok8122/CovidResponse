@@ -1,9 +1,9 @@
 ﻿using System;
 namespace CovidReponse.Models
 {
-    public class review
+    public class Review
     {
-        public review()
+        public Review()
         {
         }
 
@@ -12,5 +12,7 @@ namespace CovidReponse.Models
         public int place_ID { get; set; }
         public DateTime entered_date { get; set; }
 
+
+        public string message { get; set; }
     }
 }
