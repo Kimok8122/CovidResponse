@@ -27,7 +27,7 @@ namespace CovidReponse.Controllers
 
         public IActionResult Login()
         {
-            _logger.LogError("HELLO MIKE");
+            _logger.LogError("Tag your it");
             return View();
         }
 
