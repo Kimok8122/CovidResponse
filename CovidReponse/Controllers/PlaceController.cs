@@ -21,7 +21,7 @@ namespace CovidReponse.Controllers
         }
 
         // GET: /place/
-        public IActionResult PickAPlace()
+        public IActionResult Place()
         {
             var places = repo.GetAllCompanies();
 

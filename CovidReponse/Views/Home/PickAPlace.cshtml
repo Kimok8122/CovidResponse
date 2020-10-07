@@ -1,0 +1,25 @@
+﻿
+@model IEnumerable<Place>
+
+
+
+<div class="content">
+
+    <h3> Hello @ViewData["FirstName"] @ViewData["Last"]</h3>
+    <p>What Establishment Would You Like To View?</p>
+
+
+    <select>
+
+        @foreach (var p in ViewData["Places"] as IEnumerable<Place>)
+        {
+
+            <option value="@p.place_ID">@p.company</option>
+
+        }
+
+    </select>
+
+    <a href="/place/summary" type="button" class="btn btn-secondary btn-sm">Submit</a>
+
+</div>

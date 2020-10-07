@@ -7,7 +7,11 @@ namespace CovidReponse
     {
         public User FindUserByEmail(string email);
 
-        public User CreateUser(User u);
+        public void CreateUser(User u);
+
+        public User FindUserById(int id);
+
+        public User FindUser(User user);
 
     }
 

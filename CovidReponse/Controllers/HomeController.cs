@@ -6,28 +6,57 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CovidReponse.Models;
+using System.Data;
+using CovidReponse.Repositories;
 
 namespace CovidReponse.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IUserRepository userRepo;
+        private readonly IPlaceRepository placeRepository;
+        
 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(IUserRepository repo, IPlaceRepository placeRepository)
         {
-            _logger = logger;
+            this.userRepo = repo;
+            this.placeRepository = placeRepository;
         }
 
         public IActionResult Home()
         {
-            _logger.LogError("HELLO KIMO");
+            var user = new User();
+            return View(user);
+        }
+
+        public IActionResult InsertUserToDatabase(User user)
+        {
+            userRepo.CreateUser(user);
+
+            var newUser = userRepo.FindUser(user);
+
+            return RedirectToAction("PickAPlace", new { user_ID = newUser.user_ID });
+        }
+
+        public IActionResult PickAPlace(int user_ID)
+        {
+            
+            var user = userRepo.FindUserById(user_ID);
+
+            ViewData["Places"] = placeRepository.GetAllCompanies();
+            ViewData["FirstName"] = user.first_name;
+            ViewData["Last"] = user.last_name;
+            ViewData["Email"] = user.email;
 
             return View();
+
+            //return View(places);
         }
 
         public IActionResult Login()
         {
-            _logger.LogError("Tag your it");
+            
             return View();
         }
 

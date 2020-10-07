@@ -1,6 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Welcome";
-}
+﻿@model User
 
 
 
@@ -9,9 +7,9 @@
             
                 <div class="content">
 
-                    <h1> Welcome</h1>
+                    
+                    <h3>How Covid-19 compliant is an establishment?</h3>
                     <p>
-                        How Covid-19 compliant is an establishment?
                         Veiw local Reviews, Rankings, and Comments
                     </p>
                     
@@ -21,27 +19,44 @@
                         <p>
                         </p>
 
-                        <form action="#">
 
-                            <div class="input-group input-group-lg">
-                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" class="form-control" placeholder="Add An Email">
-                            </div>
 
-                            <div class="input-group input-group-lg">
-                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                <input type="password" class="form-control" placeholder="Create A Password">
-                            </div>
+                        @using (Html.BeginForm("InsertUserToDatabase", "Home", "Post"))
+                        {
+                        <input asp-for="user_ID" type="hidden" value="" />
+                    <form action="#">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input type="text" asp-for="first_name" class="form-control" placeholder="First Name">
+                        </div>
 
-                            <button type="submit" class="fa-lock ">Sign Up</button>
-                        </form>
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input type="text" asp-for="last_name" class="form-control" placeholder="Last Name">
+                        </div>
+
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input type="text" asp-for="email" class="form-control" placeholder="Email">
+                        </div>
+
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                            <input type="password" class="form-control" placeholder="Password">
+                        </div>
+
+                        <button type="submit" class="fa-lock ">Sign Up</button>
+                    </form>
+
+                        }
+
                         <p>
 
                         </p>
                         <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                             <ul class="navbar-nav flex-grow-1">
                                 <li class="nav-item">
-                                    <a class="text-dark" asp-area="" asp-controller="Home" asp-action="Login">Already have an Account?</a>
+                                    <a class="text-dark" asp-area="" asp-controller="Home" asp-action="Login">Already Have An Account?</a>
                                 </li>
                             </ul>
                         </div>
