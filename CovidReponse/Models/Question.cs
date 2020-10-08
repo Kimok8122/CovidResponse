@@ -1,9 +1,9 @@
 ﻿using System;
 namespace CovidReponse.Models
 {
-    public class question
+    public class Question
     {
-        public question()
+        public Question()
         {
         }
 

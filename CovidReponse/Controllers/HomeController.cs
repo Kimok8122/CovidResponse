@@ -15,8 +15,6 @@ namespace CovidReponse.Controllers
     {
         private readonly IUserRepository userRepo;
         private readonly IPlaceRepository placeRepository;
-        
-
 
         public HomeController(IUserRepository repo, IPlaceRepository placeRepository)
         {

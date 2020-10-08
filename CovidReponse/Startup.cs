@@ -32,6 +32,7 @@ namespace CovidReponse
 
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IPlaceRepository, PlaceRespository>();
+            services.AddTransient<IQuestionRepository, QuestionRespository>();
 
             services.AddControllersWithViews();
         }

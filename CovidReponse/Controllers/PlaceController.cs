@@ -13,25 +13,32 @@ namespace CovidReponse.Controllers
     public class PlaceController : Controller
     {
 
-        private readonly IPlaceRepository repo;
+        private readonly IPlaceRepository placeRepo;
+        private readonly IQuestionRepository questionRepo;
 
-        public PlaceController(IPlaceRepository repo)
+        public PlaceController(IPlaceRepository repo, IQuestionRepository qrepo)
         {
-            this.repo = repo;
+            this.placeRepo = repo;
+            this.questionRepo = qrepo;
         }
 
         // GET: /place/
         public IActionResult Place()
         {
-            var places = repo.GetAllCompanies();
+            var places = placeRepo.GetAllCompanies();
 
             return View(places);
         }
 
         // GET: /place/summary
-        public IActionResult summary()
+        public IActionResult summary(int place_ID)
         {
 
+            var viewplace = placeRepo.FindPlaceByID(place_ID);
+
+            ViewData["Places"] = placeRepo.GetAllCompanies();
+            ViewData["ViewedPlace"] = viewplace;
+            ViewData ["ViewedQuestion"] = questionRepo.FindQuestionsByPlaceType(viewplace.place_type);
             return View();
         }
     }

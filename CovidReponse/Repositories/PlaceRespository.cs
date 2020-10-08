@@ -18,8 +18,13 @@ namespace CovidReponse.Repositories
         public IEnumerable<Place> GetAllCompanies()
         {
             return _conn.Query<Place>("SELECT * FROM PLACE order by company");
-              
-               
+   
         }
+
+        public Place FindPlaceByID(int place_ID)
+        {
+            return _conn.QuerySingle<Place>("SELECT * FROM PLACE WHERE place_id = @id", new { id = place_ID });
+        }
+           
     }
 }

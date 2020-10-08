@@ -32,9 +32,9 @@ namespace CovidReponse.Controllers
 
         public IActionResult FindUserByEmail(string email)
         {
-            repo.FindUserByEmail(email);
+            var u = repo.FindUserByEmail(email);
 
-            return RedirectToAction("PickAPlace");
+            return RedirectToAction("PickAPlace", "Home", new { user_ID = u.user_ID });
         }
        
 

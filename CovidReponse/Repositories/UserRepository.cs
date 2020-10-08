@@ -34,8 +34,8 @@ namespace CovidReponse.Repositories
         public User FindUserByEmail(string email)
         {
             var sql = "SELECT * FROM USER"
-                + "WHERE email = @email ";
-            return _conn.QuerySingle<User>(sql, new {email = email });
+                + " WHERE email = @email;";
+            return _conn.QuerySingle<User>(sql, new {email = email});
         }
 
         public User FindUser(User user)
