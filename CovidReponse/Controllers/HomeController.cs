@@ -46,10 +46,9 @@ namespace CovidReponse.Controllers
             ViewData["FirstName"] = user.first_name;
             ViewData["Last"] = user.last_name;
             ViewData["Email"] = user.email;
+            ViewData["UserID"] = user.user_ID;
 
             return View();
-
-            //return View(places);
         }
 
         public IActionResult Login()

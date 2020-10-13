@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Review>
+
+@{
+    var place = (Place)ViewData["Place"];
+    var questions = (IEnumerable<Question>)ViewData["Questions"];
+    
+}
+
+    <div class="content">
+
+        <div class="text-danger"> @TempData["Error"]</div>
+        <br />
+        <p> How Would You Rate This Establishment?</p>
+
+
+        <img style="border-color: lightslategrey; border-width:2px; border-style: solid;" src="//logo.clearbit.com/@place.logo_ID" />
+        <br />
+        <br />
+        <span></span>@place.company
+        <br />
+        @place.address
+        <br />
+        <br />
+
+        <form action="/review/save">
+            <input name="place_ID" type="hidden" value="@place.place_ID" />
+            <input name="user_ID" type="hidden" value=@ViewData["UserID"] />
+            <table class="table">
+                @foreach (var q in questions)
+                {
+
+                    <tr>
+                        @if (q.point_type == "two_value")
+                        {
+                            @* draw as y/n *@
+                            <td>@q.text</td>
+                            <td>
+                                <input name="question_ID" type="hidden" value="@q.question_ID" />
+                                <select name="point_value" required class="btn btn-outline-primary">
+                                    <option value="">Choose</option>
+                                    <option value="1">&#x1F44D;</option>
+                                    <option value="5">&#x1F44E;</option>
+                                </select>
+                            </td>
+                        }
+                        else
+                        {
+                            @* draw as scale *@
+                            <td>@q.text</td>
+                            <td>
+                                <input name="question_ID" type="hidden" value="@q.question_ID" />
+                                <select name="point_value" required class="btn btn-outline-primary">
+                                    <option value="">Choose</option>
+                                    <option value="1">&#x1F637; Few</option>
+                                    <option value="2">&#x1F637;&#x1F637;</option>
+                                    <option value="3">&#x1F637;&#x1F637;&#x1F637; Most</option>
+                                    <option value="4">&#x1F637;&#x1F637;&#x1F637;&#x1F637;</option>
+                                    <option value="5">&#x1F637;&#x1F637;&#x1F637;&#x1F637;&#x1F637; All</option>
+                                </select>
+                            </td>
+
+                        }
+                    </tr>
+                }
+            </table>
+            <button type="submit" onclick="return confirm('Thank you for your review! Click OK.')" class="btn btn-outline-success">Submit</button>
+        </form>
+        <br />
+        <p>
+            <button class="btn btn-outline-primary" onclick="goBack()">Go Back</button>
+            <script>function goBack() { window.history.go(-2); }</script>
+
+
+        </p>
+
+       
+
+       
+    </div>

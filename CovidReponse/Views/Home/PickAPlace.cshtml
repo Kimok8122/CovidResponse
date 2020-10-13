@@ -2,16 +2,16 @@
 @model IEnumerable<Place>
 
 
+<div class="content">
 
-    <div class="content">
+    <h3> Hello @ViewData["FirstName"]</h3>
 
-        <h3> Hello @ViewData["FirstName"]</h3>
-        @**ViewData["Last"]*@
-        <p>What Establishment Would You Like To View?</p>
+    @**ViewData["Last"]*@
+    <p>What Establishment Would You Like To View?</p>
 
-        <form action="/place/summary">
-
-            <select name="place_ID">
+    <form action="/place/summary">
+        <input name="user_ID" type="hidden" value=@ViewData["UserID"] />
+        <select name="place_ID">
 
 
             @foreach (var p in ViewData["Places"] as IEnumerable<Place>)
@@ -22,8 +22,8 @@
             }
 
         </select>
-        
-        <button  type="submit" class="btn btn-secondary btn-sm">View</button>
-        </form>
 
-    </div>
+        <button type="submit" class="btn btn-secondary btn-sm">View</button>
+    </form>
+
+</div>

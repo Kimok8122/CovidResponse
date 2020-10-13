@@ -1,40 +1,79 @@
 ﻿
 @model IEnumerable<Place>
 
-
-
-<div class="content">
-
-    <p>What Establishment Would You Like To View?</p>
-
-    <form action="/place/summary">
-        <select name="place_ID">
-            @foreach (var p in ViewData["Places"] as IEnumerable<Place>)
-            {
-                <option value="@p.place_ID">@p.company</option>
-            }
-        </select>
-        <button type="submit" class="btn btn-secondary btn-sm">View</button>
-    </form>
-
-</div>
-<br />
-<br />
 @{
-    var viewedPlace = (Place)ViewData["ViewedPlace"];
-    var questionList = (IEnumerable<Question>)ViewData["ViewedQuestion"];
+   
+
 }
-<img style="border-color: lightslategrey; border-width:2px; border-style: solid;" src="//logo.clearbit.com/@viewedPlace.logo_ID" />
-<br />
-<br />
-<span></span>@viewedPlace.company
-<br />
-@viewedPlace.address
-<br />
-<br />
-@foreach (var q in questionList)
-{
-    @q.text
-}
+
+    <body>
+
+        <main>
+            <div class="content">
+
+                <p>What Establishment Would You Like To View?</p>
+
+                <form action="/place/summary">
+                    <input name="user_ID" type="hidden" value=@ViewData["UserID"] />
+                    <select name="place_ID">
+                        @foreach (var p in ViewData["Places"] as IEnumerable<Place>)
+                        {
+                            <option value="@p.place_ID">@p.company</option>
+                        }
+                    </select>
+                    <button type="submit" class="btn btn-secondary btn-sm">View</button>
+                </form>
+
+            </div>
+            <br />
+            <br />
+            @{
+                var user_ID = (int)ViewData["user_ID"];
+                var viewedPlace = (Place)ViewData["ViewedPlace"];
+                var questionList = (IEnumerable<Question>)ViewData["ViewedQuestion"];
+            }
+            <img style="border-color: lightslategrey; border-width:2px; border-style: solid;" src="//logo.clearbit.com/@viewedPlace.logo_ID" />
+            <br />
+            <br />
+            <span></span>@viewedPlace.company
+            <br />
+            @viewedPlace.address
+            <br />
+            <br />
+            <table class="table">
+                <tr>
+                    <th>Questions</th>
+                    <th>Rating</th>
+
+                </tr>
+                @foreach (var q in questionList)
+                {
+                    <tr>
+
+                        <td>@q.text</td>
+                        <td>@q.point_type</td>
+
+                    </tr>
+
+                }
+            </table>
+
+
+            <a href="/review?user_ID=@user_ID&place_ID=@viewedPlace.place_ID" class="btn btn-outline-success">Submit A Review</a>
+
+            <br />
+            <br />
+            
+
+        </main>
+        <p>
+            <button class="btn btn-outline-primary" onclick="goBack()">Go Back</button>
+            <script>function goBack() { window.history.back(); }</script>
+        </p>
+
+    </body>
+
+
+
 
 

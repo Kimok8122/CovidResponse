@@ -33,6 +33,7 @@ namespace CovidReponse
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IPlaceRepository, PlaceRespository>();
             services.AddTransient<IQuestionRepository, QuestionRespository>();
+            services.AddTransient<IReviewRepository, ReviewRepository>();
 
             services.AddControllersWithViews();
         }
@@ -66,6 +67,10 @@ namespace CovidReponse
                 endpoints.MapControllerRoute(
                     name: "place",
                     pattern: "{controller=Place}/{action=PickAPlace}");
+
+                endpoints.MapControllerRoute(
+                    name: "review",
+                    pattern: "{controller=Review}/{action=Review}");
             });
         }
     }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace CovidReponse.Models
 {
     public class Question
@@ -12,6 +14,8 @@ namespace CovidReponse.Models
         public string place_type { get; set; }
         public string point_type { get; set; }
         public DateTime entered_date { get; set; }
+
+        public IEnumerable<Review> Reviews { get; set; }
 
 
     }
