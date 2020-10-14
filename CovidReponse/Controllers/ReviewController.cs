@@ -56,17 +56,22 @@ namespace CovidReponse.Controllers
             var review = new Review();
             review.place_ID = form.place_ID;
             review.user_ID = form.user_ID;
+            //review.point_value = form.point_value;
             reviewRepo.Save(review);
 
-            var savedReview = reviewRepo.FindByUserAndPlace(form.user_ID, form.place_ID); 
+            var savedReview = reviewRepo.FindByUserAndPlace(form.user_ID, form.place_ID);
 
-            
+            var i = 0;
+
             foreach (var qID in form.question_ID)
             {
                 var answer = new Answer();
                 answer.questioin_ID = qID;
                 answer.review_ID = savedReview.review_ID;
+                answer.point_value = form.point_value[i];
+
                 reviewRepo.AnswerSave(answer);
+                i++;
             }
 
             return RedirectToAction("PickAPlace", "Home", new { user_ID = form.user_ID }); 

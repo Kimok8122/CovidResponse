@@ -12,6 +12,7 @@ namespace CovidReponse.Models
         public int place_ID { get; set; }
         public DateTime entered_date { get; set; }
 
+        public int point_value { get; set; }
 
         public string message { get; set; }
     }

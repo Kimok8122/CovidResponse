@@ -44,12 +44,17 @@ namespace CovidReponse.Controllers
 
             ViewData["Places"] = placeRepo.GetAllCompanies();
             ViewData["ViewedPlace"] = viewplace;
-            ViewData ["ViewedQuestion"] = questionRepo.FindQuestionsByPlaceType(viewplace.place_type);
+            //ViewData["ViewedQuestion"] = questionRepo.FindQuestionsByPlaceType(viewplace.place_type);
             ViewData["UserID"] = user_ID;
             ViewData["user_ID"] = user_ID;
+            ViewData["questionAvg"] = placeRepo.FindPlacePointAvg(place_ID);
 
             return View();
         }
+
+       
+
+
     }
  
 }
