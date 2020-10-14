@@ -48,6 +48,7 @@ namespace CovidReponse.Controllers
             ViewData["UserID"] = user_ID;
             ViewData["user_ID"] = user_ID;
             ViewData["questionAvg"] = placeRepo.FindPlacePointAvg(place_ID);
+            ViewData["reviewedPlace"] = placeRepo.FindPlaceReviewedByUserID(user_ID);
 
             return View();
         }

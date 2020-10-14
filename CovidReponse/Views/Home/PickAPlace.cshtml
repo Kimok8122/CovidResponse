@@ -6,7 +6,6 @@
 
         <h3> Hello @ViewData["FirstName"]</h3>
 
-  
         @**ViewData["Last"]*@
         <p>What Establishment Would You Like To View?</p>
 
@@ -26,5 +25,38 @@
 
             <button type="submit" class="btn btn-secondary btn-sm">View</button>
         </form>
+
+
+
+        @*@{
+
+            var reviewedPlaceList = (IEnumerable<PlaceReviewed>)ViewData["reviewedPlace"];
+
+        }
+
+        <table class="table">
+            <tr>
+                <th>Place(s) you have reviewed</th>
+
+            </tr>
+            @if (reviewedPlaceList.Count() >= 0)
+            {
+                @foreach (var company in reviewedPlaceList)
+                {
+                    <tr>
+                        <td>@company.company</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td> <p class="text-danger"> No Reviews</p> </td>
+                    <td></td>
+                </tr>
+            }
+
+        </table>*@
+
 
     </div>

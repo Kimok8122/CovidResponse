@@ -31,6 +31,7 @@
             var user_ID = (int)ViewData["user_ID"];
             var viewedPlace = (Place)ViewData["ViewedPlace"];
             var questionList = (IEnumerable<QuestionAvg>)ViewData["questionAvg"];
+            var reviewedPlaceList = (IEnumerable<PlaceReviewed>)ViewData["reviewedPlace"];
         }
         <img style="border-color: lightslategrey; border-width:2px; border-style: solid;" src="//logo.clearbit.com/@viewedPlace.logo_ID" />
         <br />
@@ -73,12 +74,36 @@
             <div class="float-right">@questionList.ElementAt(0).review_count Review(s)</div>
         }
 
-            <a href="/review?user_ID=@user_ID&place_ID=@viewedPlace.place_ID" class="btn btn-outline-success">Submit A Review</a>
+        <a href="/review?user_ID=@user_ID&place_ID=@viewedPlace.place_ID" class="btn btn-outline-success">Submit A Review</a>
 
-            <br />
-            <br />
+        <br />
+        <br />
 
-        </main>
+        <table class=" table table-sm" >
+            <tr>
+                <th>Place(s) you have reviewed</th>
+
+            </tr>
+            @if (reviewedPlaceList.Count() > 0)
+            {
+                @foreach (var company in reviewedPlaceList)
+                {
+                <tr class="d-flex">
+                    <td class="col-3" >@company.company </td>
+                </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td> <p class="text-danger"> No Reviews</p> </td>
+                    <td></td>
+                </tr>
+            }
+
+        </table>
+
+    </main>
     <p>
         <button class="btn btn-outline-primary" onclick="goBack()">Go Back</button>
         <script>function goBack() { window.history.back(); }</script>

@@ -32,6 +32,11 @@ namespace CovidReponse.Repositories
             + " join QUESTION Q on A.question_ID = Q.question_ID where r.place_ID = @id"
             + " group by A.question_ID, P.place_ID", new { id = place_ID }); 
         }
+
+        public IEnumerable<PlaceReviewed> FindPlaceReviewedByUserID(int user_ID)
+        {
+            return _conn.Query<PlaceReviewed>("Select P.company FROM REVIEW R join PLACE P on R.place_ID = P.place_ID join USER U on U.user_ID = R.user_ID where U.user_ID = @id order by company asc", new { id = user_ID });
+        }
        
     }
 }
