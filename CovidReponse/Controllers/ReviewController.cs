@@ -74,8 +74,10 @@ namespace CovidReponse.Controllers
                 i++;
             }
 
-            return RedirectToAction("PickAPlace", "Home", new { user_ID = form.user_ID });
+            //return RedirectToAction("PickAPlace", "Home", new { user_ID = form.user_ID });
             //return RedirectToAction("Summary", "Place", new { user_ID = form.user_ID });
+            //return RedirectToAction("Summary", "Review", new { user_ID = form.user_ID });
+            return RedirectToAction("PickAPlace", "Summary", new { user_ID = form.user_ID });
         }
 
     }

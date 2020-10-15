@@ -21,12 +21,12 @@
                         <option value="@p.place_ID">@p.company</option>
                     }
                 </select>
-                <button type="submit" class="btn btn-secondary btn-sm">View</button>
+                <button type="submit" class="btn btn-outline-primary btn-sm">View</button>
             </form>
 
         </div>
         <br />
-        <br />
+      
         @{
             var user_ID = (int)ViewData["user_ID"];
             var viewedPlace = (Place)ViewData["ViewedPlace"];
@@ -55,7 +55,7 @@
                         <td>@q.text</td>
                         @if (q.review_count > 0)
                         {
-                            <td>@q.average / 5 &#x1F637; </td>
+                            <td>@Decimal.Round(q.average, 2) / 5 &#x1F637; </td>
                         }
                     </tr>
                 }
@@ -78,8 +78,10 @@
 
         <br />
         <br />
+        <br />
+        <br />
 
-        <table class=" table table-sm" >
+        <table class=" table table-sm">
             <tr>
                 <th>Place(s) you have reviewed</th>
 
@@ -88,9 +90,9 @@
             {
                 @foreach (var company in reviewedPlaceList)
                 {
-                <tr class="d-flex">
-                    <td class="col-3" >@company.company </td>
-                </tr>
+                    <tr class="d-flex">
+                        <td class="col-3">@company.company </td>
+                    </tr>
                 }
             }
             else

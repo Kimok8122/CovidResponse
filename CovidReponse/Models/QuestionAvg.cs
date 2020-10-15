@@ -9,8 +9,8 @@ namespace CovidReponse.Models
 
         public int question_ID { get; set; }
         public string text { get; set; }
-        public double average { get; set; }
+        public decimal average { get; set; }
         public int review_count { get; set; }
-
+        
     }
 }
