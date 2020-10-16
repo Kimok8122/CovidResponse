@@ -47,7 +47,7 @@ namespace CovidReponse.Controllers
             if (existingReview != null)
             {
                 TempData["Error"] = "OH WOW! Looks like you already did a review this place. Click 'Go Back' to select another place to view.";
-                //return RedirectToAction("PickAPlace", "Home", new { user_ID = form.user_ID });
+                
                 return RedirectToAction("Review", new { user_ID = form.user_ID, place_ID = form.place_ID });
             }
 
@@ -77,7 +77,7 @@ namespace CovidReponse.Controllers
             //return RedirectToAction("PickAPlace", "Home", new { user_ID = form.user_ID });
             //return RedirectToAction("Summary", "Place", new { user_ID = form.user_ID });
             //return RedirectToAction("Summary", "Review", new { user_ID = form.user_ID });
-            return RedirectToAction("PickAPlace", "Summary", new { user_ID = form.user_ID });
+            return RedirectToAction("summary", "Place", new { user_ID = form.user_ID, place_ID = form.place_ID});
         }
 
     }
